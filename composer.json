@@ -1,5 +1,5 @@
 {
-    "name": "yuges-code/pinable",
+    "name": "yuges-code/pinnable",
     "description": "📌 Package for easily attaching pins to Laravel eloquent models",
     "keywords": [
         "php",
@@ -8,10 +8,10 @@
         "laravel",
         "package"
     ],
-    "homepage": "https://yuges-code.github.io/laravel-pinable",
+    "homepage": "https://yuges-code.github.io/laravel-pinnable",
     "support": {
-        "source": "https://github.com/yuges-code/laravel-pinable",
-        "issues": "https://github.com/yuges-code/laravel-pinable/issues"
+        "source": "https://github.com/yuges-code/laravel-pinnable",
+        "issues": "https://github.com/yuges-code/laravel-pinnable/issues"
     },
     "license": "MIT",
     "authors": [
@@ -31,14 +31,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Yuges\\Pinable\\": "src",
-            "Yuges\\Pinable\\Database\\Seeders\\": "database/seeders/",
-            "Yuges\\Pinable\\Database\\Factories\\": "database/factories/"
+            "Yuges\\Pinnable\\": "src",
+            "Yuges\\Pinnable\\Database\\Seeders\\": "database/seeders/",
+            "Yuges\\Pinnable\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yuges\\Pinable\\Tests\\": "tests/src"
+            "Yuges\\Pinnable\\Tests\\": "tests/src"
         }
     },
     "scripts": {
@@ -47,7 +47,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Yuges\\Pinable\\Providers\\PinableServiceProvider"
+                "Yuges\\Pinnable\\Providers\\PinnableServiceProvider"
             ]
         }
     },

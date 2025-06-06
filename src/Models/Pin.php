@@ -1,8 +1,9 @@
 <?php
 
-namespace Vendor\Pinable\Models;
+namespace Yuges\Pinnable\Models;
 
 use Yuges\Package\Models\Model;
+use Yuges\Pinnable\Config\Config;
 use Yuges\Orderable\Traits\HasOrder;
 use Yuges\Orderable\Options\OrderOptions;
 use Yuges\Orderable\Interfaces\Orderable;
@@ -19,7 +20,7 @@ class Pin extends Model implements Orderable
 
     public function getTable(): string
     {
-        return Config::getGroupTable() ?? $this->table;
+        return Config::getPinTable() ?? $this->table;
     }
 
     public function orderable(): OrderOptions
@@ -27,8 +28,8 @@ class Pin extends Model implements Orderable
         $options = new OrderOptions();
 
         $options->query = fn (Builder $builder) => $builder
-            ->where('grouperator_id', $this->grouperator_id)
-            ->where('grouperator_type', $this->grouperator_type);
+            ->where('pinner_id', $this->pinner_id)
+            ->where('pinner_type', $this->pinner_type);
 
         return $options;
     }

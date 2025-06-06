@@ -1,6 +1,6 @@
 <?php
 
-// Config for yuges/pinable
+// Config for yuges/pinnable
 
 return [
     /*
@@ -10,10 +10,13 @@ return [
         'pin' => [
             'key' => Yuges\Package\Enums\KeyType::BigInteger,
             'table' => 'pins',
-            'class' => Yuges\Pinable\Models\Pin::class,
-            'observer' => Yuges\Pinable\Observers\GroupObserver::class,
+            'class' => Yuges\Pinnable\Models\Pin::class,
+            'observer' => Yuges\Pinnable\Observers\PinObserver::class,
         ],
         'pinner' => [
+
+        ],
+        'pinnable' => [
 
         ],
     ],

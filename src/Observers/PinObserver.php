@@ -1,10 +1,10 @@
 <?php
 
-namespace Vendor\Template\Observers;
+namespace Yuges\Pinnable\Observers;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TemplateObserver
+class PinObserver
 {
     public function saving(Model $model): void
     {
