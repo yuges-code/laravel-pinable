@@ -1,8 +1,8 @@
 <?php
 
-namespace Yuges\Package\Tests\Unit;
+namespace Yuges\Pinnable\Tests\Unit;
 
-use Yuges\Package\Tests\TestCase;
+use Yuges\Pinnable\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {

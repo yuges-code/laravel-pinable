@@ -1,13 +1,16 @@
 <?php
 
-namespace Yuges\Package\Tests\Stubs\Models;
+namespace Yuges\Pinnable\Tests\Stubs\Models;
 
-use Yuges\Package\Traits\HasTable;
-use Illuminate\Database\Eloquent\Model;
+use Yuges\Package\Models\Model;
+use Yuges\Pinnable\Traits\CanPin;
+use Yuges\Pinnable\Interfaces\Pinner;
 
-class User extends Model
+class User extends Model implements Pinner
 {
-    use HasTable;
+    use CanPin;
 
     protected $table = 'users';
+
+    protected $guarded = ['id'];
 }
