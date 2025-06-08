@@ -20,7 +20,7 @@ return new class extends Migration
             return;
         }
 
-        Schema::create('table', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->key(Config::getPinKeyType(KeyType::BigInteger));
 
             $table->keyMorphs(
@@ -39,7 +39,10 @@ return new class extends Migration
                 );
 
             $table->order();
-            $table->unique(['pinnable_id', 'pinnable_type', 'pinner_id', 'pinner_type']);
+
+            if (! Config::getPermissionsDuplicate(false)) {
+                $table->unique(['pinnable_id', 'pinnable_type', 'pinner_id', 'pinner_type']);
+            }
 
             $table->timestamps();
         });

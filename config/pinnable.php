@@ -47,11 +47,12 @@ return [
 
     'permissions' => [
         'anonymous' => false,
+        'duplicate' => false,
     ],
 
     'actions' => [
-        // 'sync' => Yuges\Pinnable\Actions\SyncGroupsAction::class,
-        // 'attach' => Yuges\Pinnable\Actions\AttachGroupsAction::class,
-        // 'detach' => Yuges\Pinnable\Actions\DetachGroupsAction::class,
+        'create' => Yuges\Pinnable\Actions\CreatePinAction::class,
+        'delete' => Yuges\Pinnable\Actions\DeletePinAction::class,
+        'toggle' => Yuges\Pinnable\Actions\TogglePinAction::class,
     ],
 ];

@@ -8,21 +8,43 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Yuges\Pinnable\Interfaces\Pinner;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
  * @property Collection<array-key, Pin> $pins
  */
 trait HasPins
 {
-    public function pins(): MorphToMany
+    public function pins(): MorphMany
     {
         /** @var Model $this */
         return $this
-            ->morphToMany(
+            ->morphMany(
                 Config::getPinClass(Pin::class),
                 Config::getPinnableRelationName('pinnable')
-            )
-            ->withTimestamps();
+            );
+    }
+
+    public function pin(?Pinner $pinner = null): Pin
+    {
+        return Config::getCreatePinAction($this)->execute($pinner);
+    }
+
+    public function unpin(?Pinner $pinner = null): static
+    {
+        return Config::getDeletePinAction($this)->execute($pinner);
+    }
+
+    public function togglePin(?Pinner $pinner = null): ?Pin
+    {
+        return Config::getTogglePinAction($this)->execute($pinner);
+    }
+
+    public function defaultPinner(): ?Pinner
+    {
+        /** @var ?Pinner */
+        $pinner = Auth::user();
+
+        return $pinner;
     }
 }

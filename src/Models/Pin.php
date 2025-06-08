@@ -8,6 +8,7 @@ use Yuges\Orderable\Traits\HasOrder;
 use Yuges\Orderable\Options\OrderOptions;
 use Yuges\Orderable\Interfaces\Orderable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pin extends Model implements Orderable
@@ -21,6 +22,16 @@ class Pin extends Model implements Orderable
     public function getTable(): string
     {
         return Config::getPinTable() ?? $this->table;
+    }
+
+    public function pinner(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function pinnable(): MorphTo
+    {
+        return $this->morphTo();
     }
 
     public function orderable(): OrderOptions

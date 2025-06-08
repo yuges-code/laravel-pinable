@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 use Yuges\Pinnable\Interfaces\Pinner;
 use Yuges\Pinnable\Interfaces\Pinnable;
 use Yuges\Pinnable\Observers\PinObserver;
+use Yuges\Pinnable\Actions\CreatePinAction;
+use Yuges\Pinnable\Actions\DeletePinAction;
+use Yuges\Pinnable\Actions\TogglePinAction;
 use Yuges\Pinnable\Observers\PinnerObserver;
 use Yuges\Pinnable\Observers\PinnableObserver;
 
@@ -100,5 +103,43 @@ class Config extends \Yuges\Package\Config\Config
     public static function getPermissionsAnonymous(mixed $default = false): bool
     {
         return self::get('permissions.anonymous', $default);
+    }
+
+    public static function getPermissionsDuplicate(mixed $default = false): bool
+    {
+        return self::get('permissions.duplicate', $default);
+    }
+
+    public static function getTogglePinAction(Pinnable $pinnable, mixed $default = null): TogglePinAction
+    {
+        return self::getTogglePinActionClass($default)::create($pinnable);
+    }
+
+    /** @return class-string<TogglePinAction> */
+    public static function getTogglePinActionClass(mixed $default = null): string
+    {
+        return self::get('actions.toggle', $default);
+    }
+
+    public static function getCreatePinAction(Pinnable $pinnable, mixed $default = null): CreatePinAction
+    {
+        return self::getCreatePinActionClass($default)::create($pinnable);
+    }
+
+    /** @return class-string<CreatePinAction> */
+    public static function getCreatePinActionClass(mixed $default = null): string
+    {
+        return self::get('actions.create', $default);
+    }
+
+    public static function getDeletePinAction(Pinnable $pinnable, mixed $default = null): DeletePinAction
+    {
+        return self::getDeletePinActionClass($default)::create($pinnable);
+    }
+
+    /** @return class-string<DeletePinAction> */
+    public static function getDeletePinActionClass(mixed $default = null): string
+    {
+        return self::get('actions.delete', $default);
     }
 }
