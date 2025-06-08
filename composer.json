@@ -1,5 +1,5 @@
 {
-    "name": "yuges-code/pinnable",
+    "name": "yuges-code/laravel-pinnable",
     "description": "📌 Package for easily attaching pins to Laravel eloquent models",
     "keywords": [
         "php",
