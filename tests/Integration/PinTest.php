@@ -26,13 +26,19 @@ class PinTest extends TestCase
             'title' => 'Post',
         ]);
 
-        $pin = $post->pin($user);
+        $post->pin($user);
 
-        $this->assertDatabaseHas(Config::getPinClass(Pin::class)::getTableName(), [
+        $data = [
             'pinnable_id' => $post->getKey(),
             'pinnable_type' => $post->getMorphClass(),
             'pinner_id' => $user->getKey(),
             'pinner_type' => $user->getMorphClass(),
-        ]);
+        ];
+
+        $this->assertDatabaseHas(Config::getPinClass(Pin::class)::getTableName(), $data);
+
+        $post->unpin($user);
+
+        $this ->assertDatabaseMissing(Config::getPinClass(Pin::class)::getTableName(), $data);
     }
 }

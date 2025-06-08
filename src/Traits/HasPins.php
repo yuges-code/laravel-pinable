@@ -32,7 +32,9 @@ trait HasPins
 
     public function unpin(?Pinner $pinner = null): static
     {
-        return Config::getDeletePinAction($this)->execute($pinner);
+        Config::getDeletePinAction($this)->execute($pinner);
+
+        return $this;
     }
 
     public function togglePin(?Pinner $pinner = null): ?Pin
